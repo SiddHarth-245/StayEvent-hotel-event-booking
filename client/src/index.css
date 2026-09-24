@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-white text-[#1a1a1a] font-sans antialiased; }
+  h1, h2, h3 { @apply tracking-tight; }
+  :focus-visible { outline: 3px solid #ffb700; outline-offset: 2px; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-link text-white hover:bg-brand; }
+  .btn-outline { @apply btn border border-link text-link bg-white hover:bg-brand-light; }
+  .btn-yellow { @apply btn bg-sun text-[#1a1a1a] hover:bg-sun-dark; }
+  .btn-danger { @apply btn border border-red-600 text-red-600 bg-white hover:bg-red-50; }
+  .input { @apply w-full rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-link focus:ring-2 focus:ring-link/25; }
+  .label { @apply mb-1 block text-sm font-semibold text-gray-700; }
+  .card { @apply rounded-lg border border-gray-200 bg-white; }
+  .chip { @apply inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-xs font-medium text-gray-700; }
+  .link { @apply text-link hover:underline; }
+  .table-x { @apply w-full text-left text-sm; }
+  .table-x th { @apply bg-mist px-3 py-2.5 font-semibold text-gray-600 whitespace-nowrap; }
+  .table-x td { @apply border-t border-gray-100 px-3 py-2.5 align-middle; }
+}
+
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+/* Payment success check mark: draws itself when the page opens */
+.check-circle { stroke-dasharray: 166; stroke-dashoffset: 166; animation: draw 0.7s ease-out 0.1s forwards; }
+.check-tick { stroke-dasharray: 48; stroke-dashoffset: 48; animation: draw 0.4s ease-out 0.7s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes pop { 0% { transform: scale(.85); opacity: 0 } 100% { transform: scale(1); opacity: 1 } }
+.pop { animation: pop .35s ease-out both; }
+.spin-ring { border: 5px solid #dbe6f7; border-top-color: #0071c2; border-radius: 9999px; animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .check-circle, .check-tick { animation-duration: 0.01s; }
+  .spin-ring { animation-duration: 3s; }
+  .pop { animation: none; }
+}
