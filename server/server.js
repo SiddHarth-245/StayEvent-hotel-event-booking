@@ -10,7 +10,11 @@ const { seedData } = require('./seed/seed');
 const app = express();
 
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173'
+  origin: [
+    'http://localhost:5173',
+    'https://stay-event-hotel-event-booking-3e7q.vercel.app'
+  ],
+  credentials: true
 }));
 
 app.use(express.json());
